@@ -22,8 +22,9 @@ import json
 
 # --- AEL packages ---
 from ael import constants, settings
-from ael.utils import io, net
+from ael.utils import net
 from ael.scrapers import Scraper
+from ael.api import ROMObj
 
 logger = logging.getLogger(__name__)
 
@@ -85,7 +86,7 @@ class ArcadeDB(Scraper):
     def check_before_scraping(self, status_dic): return status_dic
 
     # Search term is always None for this scraper.
-    def get_candidates(self, search_term:str, rom_FN:io.FileName, rom_checksums_FN, platform, status_dic):
+    def get_candidates(self, search_term:str, rom:ROMObj, platform, status_dic):
         # --- If scraper is disabled return immediately and silently ---
         if self.scraper_disabled:
             # If the scraper is disabled return None and do not mark error in status_dic.
@@ -93,8 +94,7 @@ class ArcadeDB(Scraper):
             return None
 
         # Prepare data for scraping.
-        # rombase = rom_FN.getBase()
-        rombase_noext = rom_FN.getBaseNoExt()
+        rom_identifier = rom.get_identifier()
 
         # --- Request is not cached. Get candidates and introduce in the cache ---
         # ArcadeDB QUERY_MAME returns absolutely everything about a single ROM, including
@@ -102,9 +102,9 @@ class ArcadeDB(Scraper):
         # See ScreenScraper comments for more info about the implementation.
         # logger.debug('ArcadeDB.get_candidates() search_term   "{0}"'.format(search_term))
         # logger.debug('ArcadeDB.get_candidates() rombase       "{0}"'.format(rombase))
-        logger.debug('ArcadeDB.get_candidates() rombase_noext "{0}"'.format(rombase_noext))
-        logger.debug('ArcadeDB.get_candidates() AEL platform  "{0}"'.format(platform))
-        json_response_dic = self._get_QUERY_MAME(rombase_noext, platform, status_dic)
+        logger.debug('ArcadeDB.get_candidates() rom identifier "{0}"'.format(rom_identifier))
+        logger.debug('ArcadeDB.get_candidates() AEL platform   "{0}"'.format(platform))
+        json_response_dic = self._get_QUERY_MAME(rom_identifier, platform, status_dic)
         if not status_dic['status']: return None
 
         # --- Return cadidate list ---
@@ -116,7 +116,7 @@ class ArcadeDB(Scraper):
             logger.debug('ArcadeDB.get_candidates() Scraper found one game.')
             gameinfo_dic = json_response_dic['result'][0]
             candidate = self._new_candidate_dic()
-            candidate['id'] = rombase_noext
+            candidate['id'] = rom_identifier
             candidate['display_name'] = gameinfo_dic['title']
             candidate['platform'] = platform
             candidate['scraper_platform'] = platform
