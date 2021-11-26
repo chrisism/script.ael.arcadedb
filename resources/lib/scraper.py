@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Advanced Emulator Launcher scraping engine for ArcadeDB.
+# Advanced Kodi Launcher scraping engine for ArcadeDB.
 
 # Copyright (c) 2020-2021 Chrisism
 #
