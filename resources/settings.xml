@@ -28,12 +28,12 @@
                     </constraints>
                     <control type="spinner" format="string"/>
                 </setting>
-                <setting id="ael.enabled" type="boolean" label="Enable as AEL plugin" help="">
+                <setting id="ael.enabled" type="boolean" label="Enable as AKL plugin" help="">
                     <level>4</level>
                     <default>true</default>
                     <control type="toggle"/>
                 </setting>
-                <setting id="ael.plugin_types" type="string" label="AEL plugin type(s)" help="">
+                <setting id="ael.plugin_types" type="string" label="AKL plugin type(s)" help="">
                     <level>4</level>
                     <default>SCRAPER</default>
                 </setting>

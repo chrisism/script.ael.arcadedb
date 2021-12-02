@@ -1,7 +1,7 @@
 #!/usr/bin/python -B
 # -*- coding: utf-8 -*-
 #
-# Test AEL Arcade DB metadata scraper.
+# Test AKL Arcade DB metadata scraper.
 #
 
 # --- Python standard library ---
@@ -17,9 +17,9 @@ logging.basicConfig(format = '%(asctime)s %(module)s %(levelname)s: %(message)s'
 logger = logging.getLogger(__name__)
 
 from resources.lib.scraper import ArcadeDB
-from ael.utils import kodi, io
-from ael.api import ROMObj
-from ael import constants
+from akl.utils import kodi, io
+from akl.api import ROMObj
+from akl import constants
 
 # --- Test data -----------------------------------------------------------------------------------
 games = {

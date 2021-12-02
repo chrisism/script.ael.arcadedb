@@ -20,11 +20,11 @@ from __future__ import division
 import logging
 import json
 
-# --- AEL packages ---
-from ael import constants, settings
-from ael.utils import net
-from ael.scrapers import Scraper
-from ael.api import ROMObj
+# --- AKL packages ---
+from akl import constants, settings
+from akl.utils import net
+from akl.scrapers import Scraper
+from akl.api import ROMObj
 
 logger = logging.getLogger(__name__)
 
@@ -103,7 +103,7 @@ class ArcadeDB(Scraper):
         # logger.debug('ArcadeDB.get_candidates() search_term   "{0}"'.format(search_term))
         # logger.debug('ArcadeDB.get_candidates() rombase       "{0}"'.format(rombase))
         logger.debug('ArcadeDB.get_candidates() rom identifier "{0}"'.format(rom_identifier))
-        logger.debug('ArcadeDB.get_candidates() AEL platform   "{0}"'.format(platform))
+        logger.debug('ArcadeDB.get_candidates() AKL platform   "{0}"'.format(platform))
         json_response_dic = self._get_QUERY_MAME(rom_identifier, platform, status_dic)
         if not status_dic['status']: return None
 

@@ -1,6 +1,6 @@
 # Kodi Media Center language file
-# Addon Name: ArcadeDB scraper for AEL
-# Addon id: script.ael.arcadedb
+# Addon Name: ArcadeDB scraper for AKL
+# Addon id: script.akl.arcadedb
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
