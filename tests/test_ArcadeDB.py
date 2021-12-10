@@ -60,6 +60,8 @@ class Test_arcadedb(unittest.TestCase):
         print('TEST ASSETS DIR: {}'.format(cls.TEST_ASSETS_DIR))
         print('TEST OUTPUT DIR: {}'.format(cls.TEST_OUTPUT_DIR))
         print('---------------------------------------------------------------------------')
+        if not os.path.exists(cls.TEST_OUTPUT_DIR):
+            os.makedirs(cls.TEST_OUTPUT_DIR)
     
     @patch('resources.lib.scraper.settings.getSetting', autospec=True)
     def test_arcadedb_metadata(self, settings_mock:MagicMock): 
