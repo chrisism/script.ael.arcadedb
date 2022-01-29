@@ -55,18 +55,13 @@ class Test_arcadedb(unittest.TestCase):
         cls.TEST_ASSETS_DIR = os.path.abspath(os.path.join(cls.TEST_DIR,'assets/'))
         cls.TEST_OUTPUT_DIR = os.path.abspath(os.path.join(cls.TEST_DIR,'output/'))
                 
-        print('ROOT DIR: {}'.format(cls.ROOT_DIR))
-        print('TEST DIR: {}'.format(cls.TEST_DIR))
-        print('TEST ASSETS DIR: {}'.format(cls.TEST_ASSETS_DIR))
-        print('TEST OUTPUT DIR: {}'.format(cls.TEST_OUTPUT_DIR))
-        print('---------------------------------------------------------------------------')
         if not os.path.exists(cls.TEST_OUTPUT_DIR):
             os.makedirs(cls.TEST_OUTPUT_DIR)
     
-    @patch('resources.lib.scraper.settings.getSetting', autospec=True)
+    @patch('akl.settings.getSettingAsFilePath', autospec=True)
     def test_arcadedb_metadata(self, settings_mock:MagicMock): 
         
-        settings_mock.side_effect = lambda key: self.TEST_OUTPUT_DIR if key == 'scraper_cache_dir' else ''
+        settings_mock.return_value = io.FileName(self.TEST_OUTPUT_DIR,isdir=True)
         # --- main ---------------------------------------------------------------------------------------
         print('*** Fetching candidate game list ********************************************************')
 
@@ -113,11 +108,10 @@ class Test_arcadedb(unittest.TestCase):
         print(metadata)
         scraper_obj.flush_disk_cache()
 
-    @patch('resources.lib.scraper.settings.getSetting', autospec=True)
+    @patch('akl.settings.getSettingAsFilePath', autospec=True)
     def test_arcadedb_assets(self, settings_mock:MagicMock): 
         
-        settings_mock.side_effect = lambda key: self.TEST_OUTPUT_DIR if key == 'scraper_cache_dir' else ''
-        
+        settings_mock.return_value = io.FileName(self.TEST_OUTPUT_DIR,isdir=True)
         # --- main ---------------------------------------------------------------------------------------
         print('*** Fetching candidate game list ********************************************************')
 
