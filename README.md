@@ -5,7 +5,6 @@ ArcadeDB scraper for AKL. This plugin can be used to scrape metadata and assets 
 | Release | Status |
 |----|----|
 | Stable |[![Build Status](https://dev.azure.com/jnpro/AKL/_apis/build/status/script.akl.arcadedb?branchName=main)](https://dev.azure.com/jnpro/AKL/_build/latest?definitionId=14&branchName=main) |**
-| Beta | [![Build Status](https://dev.azure.com/jnpro/AKL/_apis/build/status/script.akl.arcadedb?branchName=release/1.0.0)](https://dev.azure.com/jnpro/AKL/_build/latest?definitionId=14&branchName=release/1.0.0) |
 | Unstable | [![Build Status](https://dev.azure.com/jnpro/AKL/_apis/build/status/script.akl.arcadedb?branchName=dev)](https://dev.azure.com/jnpro/AKL/_build/latest?definitionId=14&branchName=dev) |
 
 ### Kodi forum thread ###
