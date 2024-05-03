@@ -22,7 +22,7 @@ from akl.scrapers import ScraperSettings, ScrapeStrategy
 # Local modules
 from resources.lib.scraper import ArcadeDB
 
-kodilogging.config() 
+kodilogging.config()
 logger = logging.getLogger(__name__)
 
 # --- Addon object (used to access settings) ---
